@@ -5,8 +5,12 @@
         font-weight: medium;
         font-size: 2rem;
         /* text-align: center; */
-        padding-top: 50px;
-        padding-left: 50px
+       
+    }
+
+    .container{
+        padding: 50px;
+
     }
 
     .button {
@@ -16,17 +20,32 @@
         padding: 8px 32px;
         text-align: center;
         text-decoration: none;
-        display: inline-block;
         font-size: 16px;
         /* margin: 4px 2px; */
         margin-left: auto;
         display: block;
-        margin-top: 4px;
-        margin-right: 5rem;
         transition-duration: 0.4s;
         cursor: pointer;
         font-family: Gordita;
         }
+
+    .button3{
+        background-color: #6935FD;
+        border: none;
+        color: white;
+        padding: 8px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        /* margin: 4px 2px; */
+        margin-left: auto;
+        display: block;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        font-family: Gordita;
+        width: 7rem;
+        margin-bottom: 3rem;
+    }
 
 
     .button1 {
@@ -66,8 +85,9 @@
     }
 </style>
 </head>
+        <div class="container">
         <h1>List Laporan DHU</h1>
-        <a class="button button1" href="<?php echo base_url('tambahdhu')?>")>Tambah DHU</a>
+        <a class="button3 button1" href="<?php echo base_url('tambahdhu')?>")>Tambah DHU</a>
         <table>
             <tr>
                 <th>No</th>
@@ -90,6 +110,6 @@
                 <td><a class="button button1" href="">Mulai Uji</a></td>
             </tr>
         </table>
-    </div>
+        </div>
 </body>
 </html>

@@ -1,12 +1,43 @@
 <head>
 <style>
+
+    .container{
+        padding-top: 10px;
+        padding-left: 50px;
+    }
+
+    .container_box{
+        display: flex;
+        
+    }
+
+    .container_button{
+        /* width: 100%; */
+        background-color: #FFFFFF;
+        padding: 3rem;
+    }
+
+    .box{
+        flex: 1;
+    }
+
     h1 {
         font-family: Gordita;
-        font-weight: medium;
-        font-size: 2rem;
+        font-weight: 400;
         /* text-align: center; */
-        padding-top: 50px;
-        padding-left: 50px
+        
+    }
+
+    h2{
+        font-family: Gordita;
+        font-weight: 400;
+        /* text-align: center; */
+    }
+
+    label{
+        font-family: Gordita;
+        margin-right: 1rem;
+        width: 3rem;
     }
 
     .button {
@@ -16,13 +47,10 @@
         padding: 8px 32px;
         text-align: center;
         text-decoration: none;
-        display: inline-block;
         font-size: 16px;
         /* margin: 4px 2px; */
         margin-left: auto;
         display: block;
-        margin-top: 4px;
-        margin-right: 5rem;
         transition-duration: 0.4s;
         cursor: pointer;
         font-family: Gordita;
@@ -57,29 +85,41 @@
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
+        border-radius: 1rem;
     }
 
-        td, th {
+    td, th {
         border: 1px solid #dddddd;
         text-align: left;
         padding: 8px;
     }
+
+    .pratinjau{
+        display: none;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-bottom: 1.5rem;
+        background-color: #FFFFFF;
+    }
 </style>
 </head>
-        <h1>Tambah DHU</h1>
+       <div class="container"> <h1>Tambah DHU</h1>
         <form action="/action_page.php">
-            <label>Pilih STEL</label>
+            <div class="container_box">
+                <div class="box">
+                <label>Pilih STEL</label>
             <select name="stel" id="stel" onchange="changeFormat()">
-                <option value="STEL Q-084-2019">STEL Q-084-2019</option>
-                <option value="STEL Q-091-2020">STEL Q-091-2020</option>
-                <option value="STD F-025-2018">STD F-025-2018</option>
+                <option value="stel_135">STEL Q-084-2019</option>
+                <option value="stel_136">STEL Q-091-2020</option>
+                <option value="stel_137">STD F-025-2018</option>
             </select>
             <br><br>
-
-            <label>Penguji ke-1</label>
+                </div>
+                <div class="box">
+                <label>Penguji ke-1</label>
             <select name="penguji1">
             <?php foreach($penguji as $l){ ?>
-                <option value="<?= $l['nama']; ?>"><?= $l['nama']; ?></option>
+            <option value="<?= $l['nama']; ?>"><?= $l['nama']; ?></option>
             <?php } ?>
             </select>
             <br><br>
@@ -87,39 +127,141 @@
             <label>Penguji ke-2</label>
             <select name="penguji1">
             <?php foreach($penguji as $l){ ?>
-                <option value="<?= $l['nama']; ?>"><?= $l['nama']; ?></option>
+            <option value="<?= $l['nama']; ?>"><?= $l['nama']; ?></option>
             <?php } ?>
             </select>
             <br><br>
+                </div>
+            </div>
 
-            <p>Pratinjau DHU</p>
-            <table>
-                <tr>
-                    <th>No</th>
-                    <th>Tanggal</th>
-                    <th>Item Uji</th>
-                    <th>Spesifikasi</th>
-                    <th>Hasil Uji</th>
-                    <th>Ketidakpastian</th>
-                </tr>
-                <?php
-                foreach ($stel as $r) {
-                    echo "<tr>";
-                    echo "<td>" . $r['no'] . "</td><td></td><td>" . $r['item_uji'] . "</td><td>" . $r['spesifikasi'] . "</td><td></td><td></td>";
-                    echo "</tr>";
-                }
-                ?>
-            </table>
+            
 
-            <input type="submit" value="Submit">
+            <h2>Pratinjau DHU</h2></div>
+            <div name="stel_135" id="stel_135" class="pratinjau">
+                <table>
+
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Item Uji</th>
+                        <th>Spesifikasi</th>
+                        <th>Hasil Uji</th>
+                        <th>Ketidakpastian</th>
+                    </tr>
+
+                    <?php
+                    foreach ($stel_135 as $r) {
+                        echo "<tr>";
+                        echo "<td>" . $r['no'] . "</td><td></td><td>" . $r['item_uji'] . "</td><td>" . $r['spesifikasi'] . "</td><td></td><td></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+
+                </table>
+            </div>
+
+            <div name="stel_136" id="stel_136" class="pratinjau">
+                <table>
+
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Item Uji</th>
+                        <th>Spesifikasi</th>
+                        <th>Hasil Uji</th>
+                        <th>Ketidakpastian</th>
+                    </tr>
+
+                    <?php
+                    foreach ($stel_136 as $r) {
+                        echo "<tr>";
+                        echo "<td>" . $r['no'] . "</td><td></td><td>" . $r['item_uji'] . "</td><td>" . $r['spesifikasi'] . "</td><td></td><td></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+
+                </table>
+            </div>
+
+            <div name="stel_137" id="stel_137" class="pratinjau">
+                <table>
+
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Item Uji</th>
+                        <th>Spesifikasi</th>
+                        <th>Hasil Uji</th>
+                        <th>Ketidakpastian</th>
+                    </tr>
+
+                    <?php
+                    foreach ($stel_137 as $r) {
+                        echo "<tr>";
+                        echo "<td>" . $r['no'] . "</td><td></td><td>" . $r['item_uji'] . "</td><td>" . $r['spesifikasi'] . "</td><td></td><td></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+
+                </table>
+            </div>
+
+           <div class="container_button">
+                <input class="button button1" type="submit" value="Submit">
+           </div>
         </form>
     </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    function changeFormat() {
-        var x = document.getElementById("stel").value;
-        document.getElementById("pratinjau").innerHTML = x;
-    }
+
+    $(document).ready(function(){
+        $("#stel").on('change', function(){
+            // alert($(this).val());
+            $(".pratinjau").hide();
+            $("#" + $(this).val()).fadeIn(800);
+        }).change();
+    });
+
+    // function changeFormat() {
+    //     var x = document.getElementById("stel").value;
+    //     if (x == "STEL Q-084-2019") {
+    //         document.getElementById("pratinjau").style.visibility = "visible";
+    //         // document.getElementById("pratinjau").innerHTML = '<?php
+    //         //     foreach ($stel_135 as $r) {
+    //         //         echo "<tr>";
+    //         //         echo "<td>" . $r['no'] . "</td><td></td><td>" . $r['item_uji'] . "</td><td>" . $r['spesifikasi'] . "</td><td></td><td></td>";
+    //         //         echo "</tr>";
+    //         //     }
+    //         //     ?>';
+    //         document.write('<?php
+    //             foreach ($stel_135 as $r) {
+    //                 echo "<tr>";
+    //                 echo "<td>" . $r['no'] . "</td><td></td><td>" . $r['item_uji'] . "</td><td>" . $r['spesifikasi'] . "</td><td></td><td></td>";
+    //                 echo "</tr>";
+    //             }
+    //             ?>');
+    //     } else if (x == "STEL Q-091-2020"){
+    //         document.getElementById("pratinjau").style.visibility = "visible";
+    //         document.write('<?php
+    //             foreach ($stel_136 as $r) {
+    //                 echo "<tr>";
+    //                 echo "<td>" . $r['no'] . "</td><td></td><td>" . $r['item_uji'] . "</td><td>" . $r['spesifikasi'] . "</td><td></td><td></td>";
+    //                 echo "</tr>";
+    //             }
+    //             ?>');
+    //     } else {
+    //         document.getElementById("pratinjau").style.visibility = "visible";
+    //         document.getElementById("pratinjau").innerHTML = '<?php
+    //             foreach ($stel_137 as $r) {
+    //                 echo "<tr>";
+    //                 echo "<td>" . $r['no'] . "</td><td></td><td>" . $r['item_uji'] . "</td><td>" . $r['spesifikasi'] . "</td><td></td><td></td>";
+    //                 echo "</tr>";
+    //             }
+    //             ?>';
+    //     }
+        
+    // }
 </script>
 </body>
 </html>
