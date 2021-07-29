@@ -91,7 +91,8 @@
         <div class="Container_home">
         <h1 class="h1_home">List Laporan DHU</h1>
         <a class="button1 button3" href="<?php echo base_url('tambahdhu')?>")>Tambah DHU</a>
-        <table>
+        
+        <!-- <table>
             <tr>
                 <th>No</th>
                 <th>Nomor SPK</th>
@@ -112,7 +113,7 @@
                 <td><img src="/paraf/<?=$user_info['paraf']?>" style="width:50px;height:50px;"></td>
                 <td><a class="button_land button1" href="">Mulai Uji</a></td>
             </tr>
-        </table>
+        </table> -->
         </div>
 </body>
 </html>

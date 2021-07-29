@@ -7,8 +7,8 @@ use CodeIgniter\Model;
 class M_stel_137 extends Model
 {
     protected $table = 'stel_137';
-    // protected $primaryKey = 'id_user';
-    protected $allowedFields = ['no', 'item_uji', 'spesifikasi'];
+    protected $primaryKey = 'no';
+    protected $allowedFields = ['item_uji', 'spesifikasi'];
 
     public function getStel()
 	{
