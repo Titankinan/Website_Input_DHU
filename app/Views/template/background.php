@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
+<head>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<!-- <style>
     ul {
         list-style-type: none;
         background: rgba(145, 111, 243, 0.3);
@@ -22,9 +25,7 @@
         padding: 14px 16px;
         text-decoration: none;
     }
-
-    
-</style>
+</style> -->
 <body style="background: linear-gradient(121.63deg, #875EFF 2.17%, rgba(83, 29, 238, 0.651031) 59.11%, rgba(94, 38, 253, 0.42) 96.81%);">
 
     <div style="background: linear-gradient(180deg, #000000 0%, #F8F8F8 100%);

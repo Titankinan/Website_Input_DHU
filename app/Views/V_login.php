@@ -1,5 +1,8 @@
 <head>
-<style>
+<head>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<!-- <style>
     h1 {
         font-family: Gordita;
         font-weight: medium;
@@ -30,7 +33,7 @@
         transition-duration: 0.4s;
         cursor: pointer;
         font-family: Gordita;
-        }
+    }
 
     .button1 {
         background-color: white; 
@@ -64,17 +67,17 @@
         color: gray;
     }
 
-</style>
+</style> -->
 </head>
     <div style="margin: auto; width: 90%; height: 700px; background: #FFFFFF; border-radius: 10px; position:relative;">
-        <div class= "Container" style="align-items: center; justify-content: center;">
-        <h1>Log In</h1>
+        <div class= "Container_log" style="align-items: center; justify-content: center;">
+        <h1 class="h1_log">Log In</h1>
         <form method="POST" action="<?php echo base_url('login/check')?>">
             <label class="inputLabel">Email:</label><br>
             <input class="inputBox" placeholder="..." type="text" name="email"><br>
             <label class="inputLabel">Password</label><br>
             <input class="inputBox" placeholder="..." type="password" name="password"><br>
-            <button type="submit" class="button button1">Log In</button>
+            <button type="submit" class="button_land button1">Log In</button>
         </form>
         </div> 
     </div>

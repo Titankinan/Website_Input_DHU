@@ -1,5 +1,7 @@
 <head>
-<style>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<!-- <style>
     h1 {
         font-family: Gordita;
         font-weight: medium;
@@ -63,11 +65,11 @@
         color: gray;
     }
 
-</style>
-</head>
+</style> -->
+
     <div style="margin: auto; width: 90%; height: 700px; background: #FFFFFF; border-radius: 10px; position:relative;">
-        <div class="Container">
-        <h1>Sign Up</h1>
+        <div class="Container_sign">
+        <h1 class="h1_sign">Sign Up</h1>
         <!-- <p class="subheading">Sign Up</p> -->
         <!-- <div style="display: flex; justify-content: center; align-items: center;">
             <a class="button button1" href="<?php echo base_url('C_signup')?>")>Sign Up</a>

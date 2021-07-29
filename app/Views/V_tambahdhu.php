@@ -1,4 +1,7 @@
 <head>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<!-- <head>
 <style>
 
     .container{
@@ -102,8 +105,8 @@
         background-color: #FFFFFF;
     }
 </style>
-</head>
-       <div class="container"> <h1>Tambah DHU</h1>
+</head> -->
+    <div class="Container_tambah"> <h1 class="h1_tambah">Tambah DHU</h1>
         <form action="/action_page.php">
             <div class="container_box">
                 <div class="box">
@@ -136,7 +139,7 @@
 
             
 
-            <h2>Pratinjau DHU</h2></div>
+            <h2 class="h2_tambah">Pratinjau DHU</h2></div>
             <div name="stel_135" id="stel_135" class="pratinjau">
                 <table>
 
@@ -207,7 +210,7 @@
             </div>
 
            <div class="container_button">
-                <input class="button button1" type="submit" value="Submit">
+                <input class="button_tambah button1" type="submit" value="Submit">
            </div>
         </form>
     </div>

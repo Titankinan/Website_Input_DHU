@@ -1,4 +1,7 @@
 <head>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<!-- <head>
 <style>
     h1 {
         font-family: Gordita;
@@ -84,10 +87,10 @@
         padding: 8px;
     }
 </style>
-</head>
-        <div class="container">
-        <h1>List Laporan DHU</h1>
-        <a class="button3 button1" href="<?php echo base_url('tambahdhu')?>")>Tambah DHU</a>
+</head> -->
+        <div class="Container_home">
+        <h1 class="h1_home">List Laporan DHU</h1>
+        <a class="button1 button3" href="<?php echo base_url('tambahdhu')?>")>Tambah DHU</a>
         <table>
             <tr>
                 <th>No</th>
@@ -107,7 +110,7 @@
                 <td>PT. Kaya Jaya</td>
                 <td>Optical Cord Bundle</td>
                 <td><img src="/paraf/<?=$user_info['paraf']?>" style="width:50px;height:50px;"></td>
-                <td><a class="button button1" href="">Mulai Uji</a></td>
+                <td><a class="button_land button1" href="">Mulai Uji</a></td>
             </tr>
         </table>
         </div>
