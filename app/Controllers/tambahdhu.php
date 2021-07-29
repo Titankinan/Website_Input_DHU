@@ -29,4 +29,35 @@ class tambahdhu extends BaseController
 		echo view('template/header', $data);
 		echo view('V_tambahdhu');
 	}
+
+	public function insertdhu()
+	{
+		helper('form');
+		$validation = $this->validate([
+			'stel' => 'required',
+			'penguji1' => 'required',
+			'penguji2' => 'required|differs[penguji1]'
+		]);
+
+		if($validation) 
+		{
+			$stel = $this->request->getPost('stel');
+			$penguji1 = $this->request->getPost('penguji1');
+			$penguji2 = $this->request->getPost('penguji2');
+			$data = [
+				'id_stel' => $stel,
+				'penguji1' => $penguji1,
+				'penguji2' => $penguji2,
+				'aksi' => 'mulai'
+			];
+			$M_laporan = new \App\Models\M_laporan();
+			$query = $M_laporan->insert($data);
+			$id_laporan = $M_laporan->getInsertID();
+			session()->set('id_laporan', $id_laporan);
+			return redirect()->to('inputdhu/input/'.$id_laporan);
+		} else {
+			return redirect()->to('tambahdhu');
+		}
+	}
+
 }

@@ -107,7 +107,7 @@
 </style>
 </head> -->
     <div class="Container_tambah"> <h1 class="h1_tambah">Tambah DHU</h1>
-        <form action="/action_page.php">
+        <form method="POST" action="<?php echo base_url('tambahdhu/insertdhu')?>">
             <div class="container_box">
                 <div class="box">
                 <label>Pilih STEL</label>
@@ -122,15 +122,15 @@
                 <label>Penguji ke-1</label>
             <select name="penguji1">
             <?php foreach($penguji as $l){ ?>
-            <option value="<?= $l['nama']; ?>"><?= $l['nama']; ?></option>
+            <option value="<?= $l['id_user']; ?>"><?= $l['nama']; ?></option>
             <?php } ?>
             </select>
             <br><br>
 
             <label>Penguji ke-2</label>
-            <select name="penguji1">
+            <select name="penguji2">
             <?php foreach($penguji as $l){ ?>
-            <option value="<?= $l['nama']; ?>"><?= $l['nama']; ?></option>
+            <option value="<?= $l['id_user']; ?>"><?= $l['nama']; ?></option>
             <?php } ?>
             </select>
             <br><br>
@@ -149,7 +149,7 @@
                         <th>Item Uji</th>
                         <th>Spesifikasi</th>
                         <th>Hasil Uji</th>
-                        <th>Ketidakpastian</th>
+                        <th>Ket.</th>
                     </tr>
 
                     <?php

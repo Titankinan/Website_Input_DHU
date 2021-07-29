@@ -39,4 +39,11 @@ class M_user extends Model
 		return $query;
 	}
 
+    public function getById($id)
+    {
+        $model = new M_user();
+        $query = $model->where('id_user', $id)->findAll();
+		return $query[0];
+    }
+
 }

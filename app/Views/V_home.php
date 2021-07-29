@@ -92,6 +92,48 @@
         <h1 class="h1_home">List Laporan DHU</h1>
         <a class="button1 button3" href="<?php echo base_url('tambahdhu')?>")>Tambah DHU</a>
         
+
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Nomor SPK</th>
+                <th>Stel</th>
+                <th>Perangkat</th>
+                <th>Merk</th>
+                <th>Tipe</th>
+                <th>Nomor Seri</th>
+                <th>Aksi</th>
+            </tr>
+
+            <?php
+                $i = 1;
+                foreach ($laporan as $r) :?>
+                    <tr>
+                        <td><?=$i?></td>
+                        <td><?=$r['spk']?></td>
+                        <td><?=$r['id_stel']?></td>
+                        <td><?=$r['perangkat']?></td>
+                        <td><?=$r['merk']?></td>
+                        <td><?=$r['tipe']?></td>
+                        <td><?=$r['noseri']?></td>
+                        <?php 
+                            if ($r['aksi'] == "mulai"){
+                                ?>
+                                <td><a class="button button2" href="<?php echo base_url('inputdhu/input')."/".$r['id_laporan']?>">Mulai Uji</a></td>
+                                <?php
+                            }else{
+                                ?>
+                                <td><a class="button button2" href="<?php echo base_url('#').$r['id_laporan']?>">Cetak Laporan</a></td>
+                                <?php
+                            }
+                        ?>
+                    </tr>
+            <?php 
+                $i = $i + 1;
+                endforeach;
+            ?>
+
+        </table>
         <!-- <table>
             <tr>
                 <th>No</th>
