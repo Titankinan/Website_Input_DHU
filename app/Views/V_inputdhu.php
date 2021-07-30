@@ -25,8 +25,10 @@
     </div>
             <hr style="width:85%">
     <div class="Container_tambah">
+        <input class="button_tambah button1" type="submit" name="action" value="Save">
             <div class="container_box">
-                <table>
+                
+                <table id="aktifitas">
 
                     <tr>
                         <th>No</th>
@@ -37,19 +39,23 @@
                     </tr>
 
                     <tr>
-                        <th></th>
-                        <th><input type="date" class="intable" name="tanggal" value=""></th>
-                        <th><input type="text" class="intable" name="activity" value=""></th>
-                        <th><input type="text" class="intable" name="kondisi_awal" value=""></th>
-                        <th><select name="penguji1">
+                        <td>1</td>
+                        <td><input type="date" class="intable" name="tanggal" value=""></td>
+                        <td><input type="text" class="intable" name="activity" value=""></td>
+                        <td><input type="text" class="intable" name="kondisi_awal" value=""></td>
+                        <td><select name="penguji1">
                             <option value="<?= $detail["penguji1"]; ?>"><?= $penguji1["nama"]; ?></option>
                             <option value="<?= $detail["penguji2"]; ?>"><?= $penguji2['nama']; ?></option>
                             </select>
-                        </th>
+                        </td>
                     </tr>
 
                 </table>
+
             </div>
+
+            <a class="button button2" onclick="myCreateFunction()">+</a>
+
     </div>
             <!-- <div class="container_box">
                 <div class="box">
@@ -81,6 +87,56 @@
            </div> -->
         </form>
     </div>
+
+<script>
+    var i = 1
+    function myCreateFunction() {
+        i = i + 1;
+        var table = document.getElementById("aktifitas");
+        var row = table.insertRow(-1);
+
+        // var cell1 = row.insertCell(-1);
+        // var div = document.createElement("input");
+        // div.innerHTML = "Replace with description.";
+        // cell1.appendChild(div);
+        // let input1 = cell1.createElement("input");
+        var cell1 = row.insertCell(0);
+        cell1.innerHTML = i;
+
+        var cell2 = row.insertCell(1);
+        var div2 = document.createElement("input");
+        div2.type = 'date';
+        cell2.appendChild(div2);
+
+        var cell3 = row.insertCell(2);
+        var div3 = document.createElement("input");
+        cell3.appendChild(div3);
+
+        var cell4 = row.insertCell(3);
+        var div4 = document.createElement("input");
+        cell4.appendChild(div4);
+
+        var cell5 = row.insertCell(4);
+        var div5 = document.createElement("select");
+        var option1 = document.createElement("option");
+        var option2 = document.createElement("option");
+
+        option1.value = '<?= $detail["penguji1"]; ?>';
+        option1.text = '<?= $penguji1["nama"]; ?>';
+        option2.value = '<?= $detail["penguji2"]; ?>';
+        option2.text = '<?= $penguji2["nama"]; ?>';
+
+        div5.appendChild(option1);
+        div5.appendChild(option2);
+
+        cell5.appendChild(div5);
+
+        // cell2
+        // var element = document.createElement("input");
+        // element.appendChild(document.createTextNode('The man who mistook his wife for a hat'));
+        // document.getElementById('lc').appendChild(element);
+    }
+</script>
 
 </body>
 </html>

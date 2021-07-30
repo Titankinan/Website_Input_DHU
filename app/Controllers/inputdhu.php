@@ -90,4 +90,9 @@ class inputdhu extends BaseController
 		}
 	}
 
+	public function insAktifitas()
+	{
+		
+	}
+
 }
