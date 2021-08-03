@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
     <div class="Container_tambah"> <h1 class="h1_tambah">Input DHU</h1>
-        <form method="POST" action="<?php echo base_url('inputdhu/save')?>">
+        <form method="POST" action="<?php echo base_url('inputdhu/saveDet')?>">
             <div class="container_box">
                 <div class="box">
                     <input class="button_tambah button1" type="submit" name="action" value="Save">
@@ -22,41 +22,113 @@
                 </div>  
 
             </div>
+        </form>
     </div>
-            <hr style="width:85%">
+
+    <hr style="width:85%">
+
     <div class="Container_tambah">
-        <input class="button_tambah button1" type="submit" name="action" value="Save">
-            <div class="container_box">
-                
-                <table id="aktifitas">
+        <?php $x = 0;?>
+        <form method="POST" action="<?php echo base_url('inputdhu/saveAct')?>">
+            <input type="text" style="display:none;" id="row" name="row" value="asd">
+            <input class="button_tambah button1" type="submit" name="action" value="Save">
+                <div class="container_box">
 
-                    <tr>
-                        <th>No</th>
-                        <th>Tanggal</th>
-                        <th>Aktivitas</th>
-                        <th>Suhu/Kelembaban/Tegangan</th>
-                        <th>Ket</th>
-                    </tr>
+                <input type="text" style="display:none;" name="id_laporan" value="<?=$id_laporan;?>">
 
+                    <table id="aktifitas">
+
+                        <tr>
+                            <th>No</th>
+                            <th>Tanggal</th>
+                            <th>Aktivitas</th>
+                            <th>Suhu/Kelembaban/Tegangan</th>
+                            <th>Ket</th>
+                            <th>Delete</th>
+                        </tr>
+
+                        <?php
+                            $i = 1;
+                            foreach ($aktivitas as $a) :?>
+                                <tr>
+                                    <td><?=$i?></td>
+                                    <td><?=$a['tanggal']?></td>
+                                    <td><?=$a['activity']?></td>
+                                    <td><?=$a['kondisi_awal']?></td>
+                                    <?php 
+                                        if ($a['id_user'] == $penguji1["id_user"]){
+                                            ?>
+                                            <td><?=$penguji1["nama"]?></td>
+                                            <?php
+                                        }else{
+                                            ?>
+                                            <td><?=$penguji2["nama"]?></td>
+                                            <?php
+                                        }
+                                    ?>
+                                    <td><a class="button_tambah button1" href="<?php echo base_url('inputdhu/delete')."/".$a['id_aktivitas']?>">Delete</a></td>
+                                </tr>
+                        <?php 
+                            $i = $i + 1;
+                            endforeach;
+                        ?>
+                        <!-- <tr>
+                            <td>1</td>
+                            <td><input type="date" class="intable" name="tanggal" value=""></td>
+                            <td><input type="text" class="intable" name="activity" value=""></td>
+                            <td><input type="text" class="intable" name="kondisi_awal" value=""></td>
+                            <td><select name="penguji1">
+                                <option value="<?= $detail["penguji1"]; ?>"><?= $penguji1["nama"]; ?></option>
+                                <option value="<?= $detail["penguji2"]; ?>"><?= $penguji2["nama"]; ?></option>
+                                </select>
+                            </td>
+                        </tr> -->
+
+                    </table>
+
+                </div>
+            <a class="button_tambah button1" onclick="myCreateFunction()">+</a>
+        </form>
+
+    </div>
+
+    <hr style="width:85%">
+
+    <div class="Container_tambah">
+        <table>
+
+            <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Item Uji</th>
+                <th>Spesifikasi</th>
+                <th>Hasil Uji</th>
+                <th>Ket.</th>
+            </tr>
+
+            <?php
+                foreach ($stel as $r) :?>
                     <tr>
-                        <td>1</td>
-                        <td><input type="date" class="intable" name="tanggal" value=""></td>
-                        <td><input type="text" class="intable" name="activity" value=""></td>
-                        <td><input type="text" class="intable" name="kondisi_awal" value=""></td>
+                        <td><?=$r['no']?></td>
+                        <td><input type="date"></td>
+                        <td><?=$r['item_uji']?></td>
+                        <td><?=$r['spesifikasi']?></td>
+                        <td><input type="text"></td>
                         <td><select name="penguji1">
                             <option value="<?= $detail["penguji1"]; ?>"><?= $penguji1["nama"]; ?></option>
-                            <option value="<?= $detail["penguji2"]; ?>"><?= $penguji2['nama']; ?></option>
+                            <option value="<?= $detail["penguji2"]; ?>"><?= $penguji2["nama"]; ?></option>
                             </select>
                         </td>
                     </tr>
 
-                </table>
+            <?php endforeach; ?>
+                <!-- echo "<tr>";
+                echo "<td>" . $r['no'] . "</td><td></td><td>" . $r['item_uji'] . "</td><td>" . $r['spesifikasi'] . "</td><td></td><td></td>";
+                echo "</tr>"; -->
 
-            </div>
-
-            <a class="button button2" onclick="myCreateFunction()">+</a>
-
+        </table>
     </div>
+
             <!-- <div class="container_box">
                 <div class="box">
                 <label>Pilih STEL</label>
@@ -85,13 +157,18 @@
            <div class="container_button">
                 <input class="button_tambah button1" type="submit" value="Submit">
            </div> -->
-        </form>
+        
     </div>
 
 <script>
-    var i = 1
+    var i = 0;
+    var no = <?=$i - 1;?>;
     function myCreateFunction() {
+                   
+        no = no + 1;
         i = i + 1;
+        var input = document.getElementById("row");
+        input.value = i;
         var table = document.getElementById("aktifitas");
         var row = table.insertRow(-1);
 
@@ -101,19 +178,22 @@
         // cell1.appendChild(div);
         // let input1 = cell1.createElement("input");
         var cell1 = row.insertCell(0);
-        cell1.innerHTML = i;
+        cell1.innerHTML = no;
 
         var cell2 = row.insertCell(1);
         var div2 = document.createElement("input");
         div2.type = 'date';
+        div2.name = 'tanggal'+i;
         cell2.appendChild(div2);
 
         var cell3 = row.insertCell(2);
         var div3 = document.createElement("input");
+        div3.name = 'activity'+i;
         cell3.appendChild(div3);
 
         var cell4 = row.insertCell(3);
         var div4 = document.createElement("input");
+        div4.name = 'kondisi_awal'+i;
         cell4.appendChild(div4);
 
         var cell5 = row.insertCell(4);
@@ -128,7 +208,7 @@
 
         div5.appendChild(option1);
         div5.appendChild(option2);
-
+        div5.name = 'id_user'+i;
         cell5.appendChild(div5);
 
         // cell2
