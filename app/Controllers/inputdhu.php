@@ -27,6 +27,7 @@ class inputdhu extends BaseController
         $M_user = new \App\Models\M_user();
 		$M_laporan = new \App\Models\M_laporan();
 		$M_aktivitas = new \App\Models\M_aktivitas();
+		$M_uji = new \App\Models\M_uji();
 		$M_stel_135 = new \App\Models\M_stel_135();
 		$M_stel_136 = new \App\Models\M_stel_136();
 		$M_stel_137 = new \App\Models\M_stel_137();
@@ -38,6 +39,7 @@ class inputdhu extends BaseController
 		$penguji1 = $M_user->getById($detail['penguji1']);
 		$penguji2 = $M_user->getById($detail['penguji2']);
 		$aktivitas = $M_aktivitas->getById($id_laporan);
+		$uji = $M_uji->getById($id_laporan);
 		// $stel = $detail['id_stel'];
 		if ($detail['id_stel'] == "stel_135")
 		{
@@ -55,9 +57,10 @@ class inputdhu extends BaseController
 			'penguji1' => $penguji1,
 			'penguji2' => $penguji2,
 			'aktivitas' => $aktivitas,
-			'stel' => $stel
+			'stel' => $stel,
+			'uji' => $uji
 		];
-		// var_dump($detail['penguji1']);
+		// var_dump($data['uji'][0]['no']);
 		echo view('template/background');
 		echo view('template/header', $data);
 		echo view('V_inputdhu');
@@ -134,11 +137,47 @@ class inputdhu extends BaseController
 		return redirect()->to('inputdhu/input/'.$id_laporan);
 	}
 
-	public function delete($id_aktivitas)
+	public function saveUji()
+	{
+		$id_laporan = $this->request->getPost('id_laporan');
+		$M_uji = new \App\Models\M_uji();
+		$row = $this->request->getPost('baris');
+
+		// for ($x = 1; $x < $row; $x++) {
+		// 	echo $x;
+		// }
+		// var_dump($row);
+
+		for ($x = 1; $x <= $row; $x++) {
+			$id_user = $this->request->getPost('id_user'.$x);
+			$no = $this->request->getPost('no'.$x);
+			$tanggal = $this->request->getPost('tanggal'.$x);
+			$hasil_uji = $this->request->getPost('hasil_uji'.$x);
+			$data = [
+				'id_laporan' => $id_laporan,
+				'id_user' => $id_user,
+				'no' => $no,
+				'tanggal' => $tanggal,
+				'hasil_uji' => $hasil_uji
+			];
+			$query = $M_uji->insert($data);
+		}
+		return redirect()->to('inputdhu/input/'.$id_laporan);
+	}
+
+	public function deleteAct($id_aktivitas)
 	{
 		$id_laporan = session()->get('id_laporan');
 		$M_aktivitas = new \App\Models\M_aktivitas();
 		$M_aktivitas->where('id_aktivitas', $id_aktivitas)->delete();
+		return redirect()->to('inputdhu/input/'.$id_laporan);
+	}
+
+	public function deleteUji($id_uji)
+	{
+		$id_laporan = session()->get('id_laporan');
+		$M_uji = new \App\Models\M_uji();
+		$M_uji->where('id_uji', $id_uji)->delete();
 		return redirect()->to('inputdhu/input/'.$id_laporan);
 	}
 
