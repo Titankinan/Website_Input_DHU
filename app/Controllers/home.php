@@ -10,12 +10,13 @@ class home extends BaseController
 		$M_laporan = new \App\Models\M_laporan();
 		$id_user = session()->get('loggedUser');
 		$user_info = $M_user->find($id_user);
-		$laporan = $M_laporan->getLaporan();
+		$laporan = $M_laporan->getByPenguji($id_user);
 		$data = [
 			'page' => 'Home',
 			'user_info' => $user_info,
 			'laporan' => $laporan
 		];
+		// var_dump($data['laporan']);
 		echo view('template/background');
 		echo view('template/header', $data);
 		echo view('V_home');

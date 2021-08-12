@@ -23,4 +23,13 @@ class M_laporan extends Model
         $query = $model->where('id_laporan', $id)->findAll();
 		return $query[0];
     }
+
+    public function getByPenguji($id)
+    {
+        $model = new M_laporan();
+        $model->where('penguji1', $id);
+        $model->orWhere('penguji2', $id);
+        $query = $model->orWhere('penguji2', $id)->findAll();
+		return $query;
+    }
 }
