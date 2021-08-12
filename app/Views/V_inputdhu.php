@@ -156,7 +156,7 @@
                         <?php
                         }
                         ?>
-                        <td><?= $find['id_user']; ?></td>
+                        
                         <td>
                             <a href="<?php echo base_url('inputdhu/deleteUji') . "/" . $find['id_uji'] ?>">Reset</a>
                         </td>

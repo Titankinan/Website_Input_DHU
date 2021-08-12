@@ -123,7 +123,7 @@
                                 <?php
                             }else{
                                 ?>
-                                <td><a class="button button2" href="<?php echo base_url('#').$r['id_laporan']?>">Cetak Laporan</a></td>
+                                <td><a class="button button2" href="<?php echo base_url('cetak/dhu')."/".$r['id_laporan']?>">Cetak Laporan</a></td>
                                 <?php
                             }
                         ?>
