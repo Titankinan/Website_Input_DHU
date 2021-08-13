@@ -44,6 +44,7 @@ class cetak extends BaseController
 			'uji' => $uji
 		];
 
+		// var_dump($data['laporan']);
 		// echo view('template/background');
 		// echo view('template/header', $data);
 		// echo view('V_home');

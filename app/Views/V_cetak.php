@@ -229,5 +229,16 @@ html *{
 <div class=”header”></div>
 <div class=”footer”></div>
 
-<script src="js/paged.polyfill.js"></script>
+<!-- <script src="js/paged.polyfill.js"></script> -->
+<script type="text/javascript">
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+
+    window.onload = function(){ 
+        sleep(1000).then(() => {
+            window.print();
+        })
+    }
+</script>
 </html>
