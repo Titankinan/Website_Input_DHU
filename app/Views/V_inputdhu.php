@@ -22,7 +22,7 @@
                     <input type="text" class="" name="perangkat" value="<?= $detail["perangkat"]; ?>">
                 </div>
                 <div class="block">
-                    <label class="label2">MERK</label>
+                    <label class="label2">MEREK</label>
                     <input type="text" class="" name="merk" value="<?= $detail["merk"]; ?>">
                 </div>
                 <div class="block">
@@ -193,6 +193,70 @@
         <input type="text" style="display:none;" id="row" name="baris" value="<?=$j - 1;?>">
     </form>
 </div>
+
+
+<div class="Container_tambah">
+    <?php $x = 0; ?>
+    <form method="POST" action="<?php echo base_url('inputdhu/saveAct') ?>">
+        <input type="text" style="display:none;" id="row" name="row" value="asd">
+        <input class="button_tambah button1" style="margin-bottom: 20px;" type="submit" name="action" value="Save">
+        <div class="container_box">
+
+            <input type="text" style="display:none;" name="id_laporan" value="<?= $id_laporan; ?>">
+
+            <table id="aktifitas">
+
+                <tr>
+                    <th>No Acuan</th>
+                    <th>Keterangan</th>
+                    <th>Gambar</th>
+                </tr>
+
+                <?php
+                $i = 1;
+                foreach ($aktivitas as $a) : ?>
+                    <tr>
+                        <td><?= $i ?></td>
+                        <td><?= $a['tanggal'] ?></td>
+                        <td><?= $a['activity'] ?></td>
+                        <td><?= $a['kondisi_awal'] ?></td>
+                        <?php
+                        if ($a['id_user'] == $penguji1["id_user"]) {
+                        ?>
+                            <td><?= $penguji1["nama"] ?></td>
+                        <?php
+                        } else {
+                        ?>
+                            <td><?= $penguji2["nama"] ?></td>
+                        <?php
+                        }
+                        ?>
+                        <td><a class="button_tambah button1" href="<?php echo base_url('inputdhu/deleteAct') . "/" . $a['id_aktivitas'] ?>">Delete</a></td>
+                    </tr>
+                <?php
+                    $i = $i + 1;
+                endforeach;
+                ?>
+                <!-- <tr>
+                            <td>1</td>
+                            <td><input type="date" class="intable" name="tanggal" value=""></td>
+                            <td><input type="text" class="intable" name="activity" value=""></td>
+                            <td><input type="text" class="intable" name="kondisi_awal" value=""></td>
+                            <td><select name="penguji1">
+                                <option value="<?= $detail["penguji1"]; ?>"><?= $penguji1["nama"]; ?></option>
+                                <option value="<?= $detail["penguji2"]; ?>"><?= $penguji2["nama"]; ?></option>
+                                </select>
+                            </td>
+                        </tr> -->
+
+            </table>
+
+        </div>
+        <a class="button_tambah button1" onclick="myCreateFunction()">+</a>
+    </form>
+    <hr class="pembatas" style="width:85%">
+</div>
+
 
 <!-- <div class="container_box">
                 <div class="box">

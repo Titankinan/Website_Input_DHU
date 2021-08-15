@@ -99,7 +99,7 @@
                 <th>Nomor SPK</th>
                 <th>Stel</th>
                 <th>Perangkat</th>
-                <th>Merk</th>
+                <th>Merek</th>
                 <th>Tipe</th>
                 <th>Nomor Seri</th>
                 <th>Aksi</th>
@@ -123,7 +123,7 @@
                                 <?php
                             }else{
                                 ?>
-                                <td><a class="button button2" href="<?php echo base_url('cetak/dhu')."/".$r['id_laporan']?>">Cetak Laporan</a></td>
+                                <td><a class="button button2" href="<?php echo base_url('cetak/dhu')."/".$r['id_laporan']?>">Cetak DHU</a></td>
                                 <?php
                             }
                         ?>
