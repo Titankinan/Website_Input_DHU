@@ -192,67 +192,47 @@
         </table>
         <input type="text" style="display:none;" id="row" name="baris" value="<?=$j - 1;?>">
     </form>
+    <hr class="pembatas" style="width:85%">
 </div>
 
 
 <div class="Container_tambah">
-    <?php $x = 0; ?>
-    <form method="POST" action="<?php echo base_url('inputdhu/saveAct') ?>">
-        <input type="text" style="display:none;" id="row" name="row" value="asd">
+    <?php $y = 0; ?>
+    <form method="POST" action="<?php echo base_url('inputdhu/saveImg') ?>" enctype="multipart/form-data">
+        <input type="text" style="display:none;" id="rowImg" name="rowImg" value="asd">
         <input class="button_tambah button1" style="margin-bottom: 20px;" type="submit" name="action" value="Save">
         <div class="container_box">
 
             <input type="text" style="display:none;" name="id_laporan" value="<?= $id_laporan; ?>">
 
-            <table id="aktifitas">
+            <table id="gambar">
 
                 <tr>
                     <th>No Acuan</th>
                     <th>Keterangan</th>
                     <th>Gambar</th>
+                    <th>Delete</th>
                 </tr>
 
                 <?php
-                $i = 1;
-                foreach ($aktivitas as $a) : ?>
+                $k = 1;
+                foreach ($gambar as $g) : ?>
                     <tr>
-                        <td><?= $i ?></td>
-                        <td><?= $a['tanggal'] ?></td>
-                        <td><?= $a['activity'] ?></td>
-                        <td><?= $a['kondisi_awal'] ?></td>
-                        <?php
-                        if ($a['id_user'] == $penguji1["id_user"]) {
-                        ?>
-                            <td><?= $penguji1["nama"] ?></td>
-                        <?php
-                        } else {
-                        ?>
-                            <td><?= $penguji2["nama"] ?></td>
-                        <?php
-                        }
-                        ?>
-                        <td><a class="button_tambah button1" href="<?php echo base_url('inputdhu/deleteAct') . "/" . $a['id_aktivitas'] ?>">Delete</a></td>
+                        <!-- <td><?= $k ?></td> -->
+                        <td><?= $g['no'] ?></td>
+                        <td><?= $g['keterangan'] ?></td>
+                        <td><img src="/gambar/<?=$g['gambar']?>" style="width:200px;height:200px;"></td>
+                        <td><a class="button_tambah button1" href="<?php echo base_url('inputdhu/deleteImg') . "/" . $g['id_gambar'] ?>">Delete</a></td>
                     </tr>
                 <?php
-                    $i = $i + 1;
+                    $k = $k + 1;
                 endforeach;
                 ?>
-                <!-- <tr>
-                            <td>1</td>
-                            <td><input type="date" class="intable" name="tanggal" value=""></td>
-                            <td><input type="text" class="intable" name="activity" value=""></td>
-                            <td><input type="text" class="intable" name="kondisi_awal" value=""></td>
-                            <td><select name="penguji1">
-                                <option value="<?= $detail["penguji1"]; ?>"><?= $penguji1["nama"]; ?></option>
-                                <option value="<?= $detail["penguji2"]; ?>"><?= $penguji2["nama"]; ?></option>
-                                </select>
-                            </td>
-                        </tr> -->
 
             </table>
 
         </div>
-        <a class="button_tambah button1" onclick="myCreateFunction()">+</a>
+        <a class="button_tambah button1" onclick="insertImgFunction()">+</a>
     </form>
     <hr class="pembatas" style="width:85%">
 </div>
@@ -291,6 +271,7 @@
 
 <script>
     var i = 0;
+    var k = 0;
     var no = <?= $i - 1; ?>;
 
     function myCreateFunction() {
@@ -346,6 +327,46 @@
         // element.appendChild(document.createTextNode('The man who mistook his wife for a hat'));
         // document.getElementById('lc').appendChild(element);
     }
+
+    function insertImgFunction() {
+        k = k + 1;
+        var input = document.getElementById("rowImg");
+        input.value = k;
+        var table = document.getElementById("gambar");
+        var row = table.insertRow(-1);
+
+        // var cell1 = row.insertCell(-1);
+        // var div = document.createElement("input");
+        // div.innerHTML = "Replace with description.";
+        // cell1.appendChild(div);
+        // let input1 = cell1.createElement("input");
+        var cell1 = row.insertCell(0);
+        var div1 = document.createElement("select");
+
+        // var noImg = 1;
+        
+        <?php foreach($stel as $a){ ?>
+            var option = document.createElement("option");
+            option.value = '<?= $a['no']; ?>';
+            option.text = '<?= $a['no']; ?>';
+            div1.appendChild(option);
+            cell1.appendChild(div1);
+        <?php } ?>
+        div1.name = 'no' + k;
+
+        var cell2 = row.insertCell(1);
+        var div2 = document.createElement("input");
+        div2.name = 'keterangan' + k;
+        cell2.appendChild(div2);
+
+        var cell3 = row.insertCell(2);
+        var div3 = document.createElement("input");
+        div3.type = 'file';
+        div3.name = 'gambar' + k;
+        cell3.appendChild(div3);
+
+    }
+
 </script>
 
 </body>

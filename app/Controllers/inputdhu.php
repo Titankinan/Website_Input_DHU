@@ -28,6 +28,7 @@ class inputdhu extends BaseController
 		$M_laporan = new \App\Models\M_laporan();
 		$M_aktivitas = new \App\Models\M_aktivitas();
 		$M_uji = new \App\Models\M_uji();
+		$M_gambar = new \App\Models\M_gambar();
 		$M_stel_135 = new \App\Models\M_stel_135();
 		$M_stel_136 = new \App\Models\M_stel_136();
 		$M_stel_137 = new \App\Models\M_stel_137();
@@ -40,6 +41,7 @@ class inputdhu extends BaseController
 		$penguji2 = $M_user->getById($detail['penguji2']);
 		$aktivitas = $M_aktivitas->getById($id_laporan);
 		$uji = $M_uji->getById($id_laporan);
+		$gambar = $M_gambar->getById($id_laporan);
 		// $stel = $detail['id_stel'];
 		if ($detail['id_stel'] == "stel_135")
 		{
@@ -58,7 +60,8 @@ class inputdhu extends BaseController
 			'penguji2' => $penguji2,
 			'aktivitas' => $aktivitas,
 			'stel' => $stel,
-			'uji' => $uji
+			'uji' => $uji,
+			'gambar' => $gambar
 		];
 		// var_dump($data['uji'][0]['no']);
 		echo view('template/background');
@@ -165,6 +168,40 @@ class inputdhu extends BaseController
 		return redirect()->to('inputdhu/input/'.$id_laporan);
 	}
 
+	public function saveImg()
+	{
+		helper('form');
+		$id_laporan = $this->request->getPost('id_laporan');
+		$M_gambar = new \App\Models\M_gambar();
+		$row = $this->request->getPost('rowImg');
+
+		// $x = 1;
+		// $id_user = $this->request->getPost('id_user'.$x);
+		// $no = $this->request->getPost('no1');
+		// var_dump($no);
+
+		for ($x = 1; $x <= $row; $x++) {
+			$no = $this->request->getPost('no'.$x);
+			$keterangan = $this->request->getPost('keterangan'.$x);
+			// $gambar = $this->request->getPost('gambar'.$x);
+
+			$gambar				= $this->request->getFile('gambar'.$x);
+			$newName = $gambar->getRandomName();
+			$newGambar = $gambar->move(ROOTPATH . 'public\gambar', $newName);
+			// $gambar->move(ROOTPATH . 'public\gambar');
+			$namaGambar				= $gambar->getName();
+
+			$data = [
+				'id_laporan' => $id_laporan,
+				'no' => $no,
+				'keterangan' => $keterangan,
+				'gambar' => $namaGambar
+			];
+			$query = $M_gambar->insert($data);
+		}
+		return redirect()->to('inputdhu/input/'.$id_laporan);
+	}
+
 	public function deleteAct($id_aktivitas)
 	{
 		$id_laporan = session()->get('id_laporan');
@@ -181,4 +218,11 @@ class inputdhu extends BaseController
 		return redirect()->to('inputdhu/input/'.$id_laporan);
 	}
 
+	public function deleteImg($id_gambar)
+	{
+		$id_laporan = session()->get('id_laporan');
+		$M_gambar = new \App\Models\M_gambar();
+		$M_gambar->where('id_gambar', $id_gambar)->delete();
+		return redirect()->to('inputdhu/input/'.$id_laporan);
+	}
 }

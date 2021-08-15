@@ -30,8 +30,8 @@ class signup extends BaseController
 			$password			= $this->request->getPost('password');		//md5($this->input->post('password'));
 			// $paraf				= $this->request->getPost('cpassword');
 			$file				= $this->request->getFile('paraf');
-			
-			$file->move(ROOTPATH . 'public\paraf');
+			$newName = $file->getRandomName();
+			$newGambar = $file->move(ROOTPATH . 'public\paraf', $newName);
 			$paraf				= $file->getName();
 			
 			// $path 				= $this->request->getFile('paraf')->store(ROOTPATH . 'public/paraf', 'user_name.jpg');
