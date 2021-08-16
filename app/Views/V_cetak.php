@@ -2,7 +2,7 @@
 <html>
 <head>
     <!-- <link rel="stylesheet" href="/css/style.css"> -->
-    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+    <!-- <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script> -->
 </head>
 
 <style>
@@ -76,7 +76,7 @@ html *{
     }
 
     @bottom-right {
-        content: 'TLKM06/F/001 Versi 01';
+        content: 'TLKM06/F/001 Versi 02';
     }
 
     @top-left{
@@ -214,6 +214,31 @@ html *{
                             echo "</tr>"; -->
 
                     </table>
+
+                    <table id="aktifitas" class="act">
+
+                    <tr class="act">
+                        <th class="actrow">No Acuan</th>
+                        <th class="actrow">Keterangan</th>
+                        <th class="actrow">Gambar</th>
+                    </tr>
+
+                    <?php
+                    $k = 1;
+                    foreach ($gambar as $g) : ?>
+                        <tr>
+                            <!-- <td><?= $k ?></td> -->
+                            <td><?= $g['no'] ?></td>
+                            <td><?= $g['keterangan'] ?></td>
+                            <td><img src="/gambar/<?=$g['gambar']?>" style="width:200px;height:200px;"></td>
+                        </tr>
+                    <?php
+                        $k = $k + 1;
+                    endforeach;
+                    ?>
+
+                    </table>
+
                 </div>
             </td>
         </tr>

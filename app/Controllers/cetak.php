@@ -11,6 +11,7 @@ class cetak extends BaseController
 		$M_laporan = new \App\Models\M_laporan();
 		$M_aktivitas = new \App\Models\M_aktivitas();
 		$M_uji = new \App\Models\M_uji();
+		$M_gambar = new \App\Models\M_gambar();
 		$M_stel_135 = new \App\Models\M_stel_135();
 		$M_stel_136 = new \App\Models\M_stel_136();
 		$M_stel_137 = new \App\Models\M_stel_137();
@@ -22,6 +23,7 @@ class cetak extends BaseController
 		$penguji2 = $M_user->getById($detail['penguji2']);
 		$aktivitas = $M_aktivitas->getById($id_laporan);
 		$uji = $M_uji->getById($id_laporan);
+		$gambar = $M_gambar->getById($id_laporan);
 
 		if ($detail['id_stel'] == "stel_135")
 		{
@@ -41,7 +43,8 @@ class cetak extends BaseController
 			'penguji2' => $penguji2,
 			'aktivitas' => $aktivitas,
 			'stel' => $stel,
-			'uji' => $uji
+			'uji' => $uji,
+			'gambar' => $gambar
 		];
 
 		// var_dump($data['laporan']);
