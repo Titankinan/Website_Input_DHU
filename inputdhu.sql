@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2021 at 05:24 AM
+-- Generation Time: Aug 20, 2021 at 09:20 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -86,10 +86,8 @@ CREATE TABLE `laporan` (
 --
 
 INSERT INTO `laporan` (`id_laporan`, `id_stel`, `spk`, `perangkat`, `merk`, `tipe`, `noseri`, `aksi`, `penguji1`, `penguji2`) VALUES
-(1, 'stel_135', '024/001/QA/2021 ', 'RECTIFIER OUTDOOR MINI OLT', 'ZTE', 'Rectifier Sub Rack ZXDU48 B151; Modul ZXD1500 V5.0', '210100018474', 'cetak', 1, 2),
-(2, 'stel_137', '025/002/QA/2021 ', 'apple', 'iphone', '12', '210112', 'mulai', 2, 1),
-(4, 'stel_137', '024/001/QA/2021 ', 'apple', 'tulang', '12', '123', 'mulai', 1, 2),
-(5, 'stel_137', '', '', '', '', '', 'mulai', 1, 3);
+(1, 'stel_135', '024/001/QA/2021 ', 'RECTIFIER OUTDOOR MINI OLT', 'ZTE', 'Rectifier Sub Rack ZXDU48 B151; Modul ZXD1500 V5.0', '210100018474', 'mulai', 1, 2),
+(2, 'stel_137', '025/002/QA/2021 ', 'apple', 'iphone', '12', '210112', 'mulai', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -392,13 +390,13 @@ ALTER TABLE `aktivitas`
 -- AUTO_INCREMENT for table `gambar`
 --
 ALTER TABLE `gambar`
-  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `uji`
@@ -410,7 +408,7 @@ ALTER TABLE `uji`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

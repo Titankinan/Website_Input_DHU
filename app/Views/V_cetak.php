@@ -50,7 +50,7 @@ html *{
     border: 1px solid black;
     border-collapse: collapse;
     width: 100%;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .actrow{
@@ -58,18 +58,30 @@ html *{
     border-right: 1px solid black; 
     border-left: 1px solid black;
     border-collapse: collapse;
+    /* page-break-inside: avoid; */
 }
 
 .actrow2{
     border: 1px solid black;
     border-collapse: collapse;
+    /* page-break-inside: avoid; */
+}
+
+.actbreak{
+    
+    border: 1px solid black;
+    border-collapse: collapse;
+    /* page-break-inside: avoid; */
+}
+
+.actspec{
+    break-after: page ;
 }
 
 @page {
-
     size: A4 landscape;
 
-    margin-top: 150px;
+    /* margin-top: 150px; */
 
     @bottom-left {
         content: 'Hal ' counter(page) ' dari ' counter(pages);
@@ -88,12 +100,16 @@ html *{
 
 }
 
-</style>
+@media print {
+  pre, blockquote {page-break-inside: avoid;}
+}
 
+</style>
+<p style="text-align:right;">TLKM06/F/001 Versi 02</p>
 <table>
-    <thead>
+    <!-- <thead> -->
         <td>
-            <div class=“empty-header“>
+            <div class=“empty-header“ style='border: 1px solid black;'>
                 <div class="block">
                     <label class="label2">SPK</label>
                     <label class="">: <?= $detail["spk"]; ?></label>
@@ -116,7 +132,7 @@ html *{
                 </div>
             </div>
         </td>
-    </thead>
+    <!-- </thead> -->
 
     <tbody>
         <tr>
@@ -185,7 +201,7 @@ html *{
                     foreach ($stel as $r) : 
                         $find = searchForId($r['no'], $uji);
                         if ($find != null) :?>
-                            <tr>
+                            <tr class="actbreak">
                                 <td class="actrow2"><?= $find['no']; ?></td>
                                 <td class="actrow2"><?= $find['tanggal']; ?></td>
                                 <td class="actrow2"><?= $r['item_uji'] ?></td>
@@ -228,9 +244,9 @@ html *{
                     foreach ($gambar as $g) : ?>
                         <tr>
                             <!-- <td><?= $k ?></td> -->
-                            <td><?= $g['no'] ?></td>
-                            <td><?= $g['keterangan'] ?></td>
-                            <td><img src="/gambar/<?=$g['gambar']?>" style="width:200px;height:200px;"></td>
+                            <td class="actrow2"><?= $g['no'] ?></td>
+                            <td class="actrow2"><?= $g['keterangan'] ?></td>
+                            <td class="actrow2"><img src="/gambar/<?=$g['gambar']?>" style="width:200px;height:200px;"></td>
                         </tr>
                     <?php
                         $k = $k + 1;
